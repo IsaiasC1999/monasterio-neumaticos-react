@@ -1,0 +1,19 @@
+.main{
+    
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    margin-top: 0px;
+    min-height: 100vh;
+    border-radius: 7px 0px 0px 0px; 
+    padding: 10px;
+    &__title{
+        padding-top: 2rem;
+        margin-bottom: 3rem;
+        color: #100daa;
+        // margin-top: 4rem;
+        // margin-left: 12.5rem;
+        // text-align: left;
+    }
+}
