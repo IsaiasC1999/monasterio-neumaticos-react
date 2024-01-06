@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
 export const MyDocument = () => {
 
     const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
-
+    
     return (
 
         <Document>
