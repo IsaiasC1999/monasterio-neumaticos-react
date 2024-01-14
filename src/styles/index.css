@@ -1,5 +1,6 @@
 @import './normalize.css';
 @import '../components/Header/Header.scss';
 @import '../components/Main/Main.scss';
-@import '../components/FormPresupuesto/FormPresupuesto.scss'
-
+@import '../components/FormPresupuesto/FormPresupuesto.scss';
+@import '../components/Modal/Modal.scss';
+@import '../components/FormItem/FormItem.scss'

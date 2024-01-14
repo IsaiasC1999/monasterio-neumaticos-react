@@ -1,8 +1,8 @@
 
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import ImageLogo from '../img/logoMonasterio.png'
 import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
-import { FormContext } from '../context/FormContext';
+// import { FormContext } from '../context/FormContext';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -104,9 +104,9 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-export const MyDocument = () => {
+export const MyDocument = ({nameComplete,direccion,localidad,condPago,cuit,fecha,condIva,codigo}) => {
 
-    const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
+    // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
     
     return (
 
@@ -140,8 +140,8 @@ export const MyDocument = () => {
                         </View>
                         <View style={{ width: '50vh', display: 'flex', justifyContent: 'space-between' }}>
                             <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND. PAGO : </Text>{condPago}</Text>
-                            <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>LOCALIDAD : </Text></Text>
-                            <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CUIT Nº: </Text>30504320711</Text>
+                            <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>LOCALIDAD : </Text>{localidad}</Text>
+                            <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CUIT Nº: </Text>{cuit}</Text>
                         </View>
                     </View>
 
@@ -150,11 +150,11 @@ export const MyDocument = () => {
                         <Text style={styles.itemH}>CÓDIGO </Text>
                         <Text style={styles.itemH}>DESCRIPCION</Text>
                         <Text style={styles.itemH}>PREC. UNI</Text>
-                        <Text style={styles.itemH}>DTO. %</Text>
+                        <Text style={styles.itemH}>DTO. %</Text>    
                         <Text style={styles.itemH}>IMPORTE</Text>
                     </View>
                     <View style={styles.totalSubtotal}>
-                        T<Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
+                        <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
                         <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
                         <Text style={styles.itemFinalTotal}>TOTAL                    {"$25.000,00"}</Text>
                     </View>

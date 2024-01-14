@@ -1,0 +1,33 @@
+.form_presu__inputs {
+
+
+
+    .form-presu__gruop {
+        display: flex;
+        flex-direction: column;
+        margin: 7px;
+        align-items: flex-start;
+        gap: 5px;
+
+        .label {
+            font-weight: 600;
+        }
+
+        .input {
+            padding-top: 7px;
+            padding-bottom: 7px;
+            // border-radius: 5px;
+            width: 300px;
+            // background-color: red;
+            border: none;
+            border-bottom: solid 1.5px rgba(0, 0, 255, 0.507);
+
+            &:focus {
+                outline: none;
+                border-bottom: solid 3px rgba(0, 0, 255, 0.507);
+            }
+        }
+    }
+
+    
+}
