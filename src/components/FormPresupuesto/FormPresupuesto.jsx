@@ -8,7 +8,7 @@ import FormItem from "../FormItem/FormItem";
 function FormPresupuesto() {
 
 
-  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setFecha, setCondIva,item} = useContext(FormContext)
+  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setFecha, setCondIva, item } = useContext(FormContext)
 
   const [modalProducts, setModalPorducts] = useState(false)
 
@@ -19,9 +19,9 @@ function FormPresupuesto() {
 
   }
 
-   function closeModal() {
-      setModalPorducts(!modalProducts)
-   }
+  function closeModal() {
+    setModalPorducts(!modalProducts)
+  }
 
   return (
     <>
@@ -61,32 +61,33 @@ function FormPresupuesto() {
           </div>
 
         </div>
-          <button className="" onClick={() => setModalPorducts(!modalProducts)}>Agregar item</button>
+        <div className="from-presu__buttons">
+
+          <button className="form-presu__btn-item" onClick={() => setModalPorducts(!modalProducts)}>Agregar item</button>
           {modalProducts
             ?
             <Modal mesaggeAviso={modalProducts}>
-               <h3>Productos del presupuesto</h3>
+              <h3>Productos del presupuesto</h3>
               <FormItem closeModal={closeModal} />
-              
+
             </Modal>
             :
             null
           }
-        
-        <PDFDownloadLink className="form-presu__btn" style={{marginTop:"1rem"}} document={<MyDocument
-          nameComplete={nameComplete}
-          direccion={direccion}
-          localidad={localidad}
-          condPago={condPago}
-          cuit={cuit}
-          fecha={fecha}
-          condIva={condIva}
-          item={item}
 
-
-        />} fileName="presu2.pdf">
-          Solicitar PDF
-        </PDFDownloadLink>
+          <PDFDownloadLink className="form-presu__pdf" style={{ marginTop: "1rem" }} document={<MyDocument
+            nameComplete={nameComplete}
+            direccion={direccion}
+            localidad={localidad}
+            condPago={condPago}
+            cuit={cuit}
+            fecha={fecha}
+            condIva={condIva}
+            item={item}
+          />} fileName="presu2.pdf">
+            Solicitar PDF
+          </PDFDownloadLink>
+        </div>
       </form>
 
 

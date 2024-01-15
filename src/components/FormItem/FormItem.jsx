@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { FormContext } from "../../context/FormContext";
 
 
@@ -42,8 +42,10 @@ function FormItem({ closeModal }) {
                     <label className="label">Descuento %</label>
                     <input className="input" value={descuento} onChange={(e) => setDescuento(e.target.value)} type="text" />
                 </div>
-                <button onClick={()=>{SaveItem() , closeModal()}}>Guardar</button>
-                <button onClick={closeModal}>Cancelar</button>
+                <div className="form-presu__buttons">
+                <button className="form-presu__btn-save" onClick={()=>{SaveItem() , closeModal()}}>Guardar</button>
+                <button className="form-presu__btn_cancel" onClick={closeModal}>Cancelar</button>
+                </div>
             </div>
         
     )
