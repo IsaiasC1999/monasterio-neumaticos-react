@@ -78,6 +78,20 @@ const styles = StyleSheet.create({
     fontSize: 10
   },
 
+  listItem: {
+    height: '3%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 4,
+  },
+  itemsL: {
+    fontFamily: 'Helvetica-Bold',
+    fontSize: 10
+  },
+
+
+
   // Total y subtotal
   totalSubtotal: {
     height: '15%',
@@ -108,7 +122,7 @@ const styles = StyleSheet.create({
 export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, item }) => {
 
   // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
-  console.log(item.cantidad);
+
 
   return (
 
@@ -155,14 +169,22 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             <Text style={styles.itemH}>DTO. %</Text>
             <Text style={styles.itemH}>IMPORTE</Text>
           </View>
-          <View>
-            <Text>{item.cantidad}</Text>
-            {/* <Text>{item[0].codigo}</Text>
-                      <Text>{item[0].descripcion}</Text>
-                      <Text>{item[0].precio}</Text>
-                      <Text>{item[0].descuento}</Text>
-                       */}
-          </View>
+          {
+            item.length != 0 ?
+              item.map(ele => {
+                return (
+                  <View style={styles.listItem}>
+                    <Text style={styles.itemsL} >{ele.cantidad}</Text>
+                    <Text style={styles.itemsL} >{ele.codigo}</Text>
+                    <Text style={styles.itemsL} >{ele.descripcion}</Text>
+                    <Text style={styles.itemsL} >{ele.precio}</Text>
+                    <Text style={styles.itemsL} >{ele.descuento}</Text>
+                    <Text style={styles.itemsL} >{ele.descuento}</Text>
+                  </View>)
+              }) :
+              null
+          }
+
           <View style={styles.totalSubtotal}>
             <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
             <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
