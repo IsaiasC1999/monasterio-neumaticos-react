@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '50vh',
-    marginBottom:"4px"
+    marginBottom: "4px"
 
   },
   datosEmpresa: {
@@ -71,36 +71,40 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  // header items
+  // item main
 
-  headerItem: {
-    height: '3%',
-    borderBottom: '1px solid #000',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 4,
-
-
-
+  table: {
+    display: 'table',
+    // backgroundColor: 'red',
+    width: '100%'
   },
 
-  itemH: {
-    fontFamily: 'Helvetica-Bold',
+  header: {
+    margin: "auto",
+    flexDirection: "row",
+    borderBottomWidth: "solid",
+    borderWidth: ".5px",
+    fontFamily: 'Helvetica-Bold'
+  },
+
+  tableColumn: {
+    width: "20%",
+    marginBottom: "5px"
+    // borderStyle: "solid",
+    // borderWidth: 1,
+    // borderLeftWidth: 0,
+    // borderTopWidth: 0
+  },
+
+  cellHeader: {
+    margin: "auto",
+    marginTop: 5,
     fontSize: 10
   },
 
-  listItem: {
-    height: '3%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 4,
-    marginTop: "5px"
-  },
-  itemsL: {
-    fontFamily: 'Helvetica-Bold',
-    fontSize: 11,
+  body: {
+    margin: "auto",
+    flexDirection: "row"
   },
 
 
@@ -146,8 +150,8 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
               <Image src={ImageLogo} style={{ width: 160, margin: 15 }} />
               <Text style={{ fontSize: 10 }}>Ruta Provincial 305 Km 19 0 - Timbo Viejo - Tucumán</Text>
               <Text style={{ fontSize: 10, marginTop: 3 }}>Tel.: 3815828883     monasterioneumaticos@gmail.com</Text>
-              <View style={{ border: '1px solid #000' , marginTop: 10 , marginBottom: 2 }}>
-                <Text style={{ fontSize: 10 , paddingBottom: 3 }}> IVA RESPONSABLE INSCRIPTO</Text>
+              <View style={{ border: '1px solid #000', marginTop: 10, marginBottom: 2 }}>
+                <Text style={{ fontSize: 10, paddingBottom: 3 }}> IVA RESPONSABLE INSCRIPTO</Text>
               </View>
             </View>
             <View style={styles.datosEmpresa}>
@@ -173,34 +177,80 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             </View>
           </View>
 
-          <View style={styles.headerItem}>
+          {/* <View style={styles.headerItem}>
             <Text style={styles.itemH}>CANT.</Text>
             <Text style={styles.itemH}>CÓDIGO </Text>
             <Text style={styles.itemH}>DESCRIPCION</Text>
             <Text style={styles.itemH}>PREC. UNI</Text>
             <Text style={styles.itemH}>DTO. %</Text>
             <Text style={styles.itemH}>IMPORTE</Text>
-          </View>
+          </View> */}
           <View style={styles.content}>
-            <View>
-
-              {
-                item.length != 0 ?
-                  item.map(ele => {
-                    return (
-                      <View style={styles.listItem}>
-                        <Text style={styles.itemsL} >{ele.cantidad}</Text>
-                        <Text style={styles.itemsL} >{ele.codigo}</Text>
-                        <Text style={styles.itemsL} >{ele.descripcion}</Text>
-                        <Text style={styles.itemsL} >{ele.precio}</Text>
-                        <Text style={styles.itemsL} >{ele.descuento}</Text>
-                        <Text style={styles.itemsL} >{ele.descuento}</Text>
-                      </View>
-
-                    )
-                  }) :
-                  null
-              }
+            <View style={styles.table}>
+              <View style={styles.header}>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    cantidad
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.body}>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    cantidad
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    cantidad
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    cantidad
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+                <View style={styles.tableColumn}>
+                  <Text style={styles.cellHeader}>
+                    codigo
+                  </Text>
+                </View>
+              </View>
             </View>
 
             <View style={styles.totalSubtotal}>
