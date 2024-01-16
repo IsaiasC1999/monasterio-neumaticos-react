@@ -10,12 +10,16 @@ const styles = StyleSheet.create({
   page: {
     backgroundColor: '#E4E4E4',
     padding: 10
+
+
+
   },
   mySection: {
     margin: 10,
     flexGrow: 1,
     border: '1px solid #000', // Añadir un borde alrededor del recuadro
-    // backgroundColor : 'red'
+    // backgroundColor: 'red',
+    // maxHeight: "100vh"
   },
 
 
@@ -34,7 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: 'start',
     alignItems: 'center',
     height: '100%',
-    width: '50vh'
+    width: '50vh',
+    marginBottom:"4px"
 
   },
   datosEmpresa: {
@@ -59,6 +64,13 @@ const styles = StyleSheet.create({
   },
 
 
+
+  content: {
+    height: "100%",
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+
   // header items
 
   headerItem: {
@@ -68,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 4,
-    // backgroundColor: 'red'
+
 
 
   },
@@ -84,10 +96,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 4,
+    marginTop: "5px"
   },
   itemsL: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 10
+    fontSize: 11,
   },
 
 
@@ -96,7 +109,6 @@ const styles = StyleSheet.create({
   totalSubtotal: {
     height: '15%',
     borderTop: '1px solid black',
-    marginTop: '480px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -134,8 +146,8 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
               <Image src={ImageLogo} style={{ width: 160, margin: 15 }} />
               <Text style={{ fontSize: 10 }}>Ruta Provincial 305 Km 19 0 - Timbo Viejo - Tucumán</Text>
               <Text style={{ fontSize: 10, marginTop: 3 }}>Tel.: 3815828883     monasterioneumaticos@gmail.com</Text>
-              <View style={{ border: '1px solid #000', marginTop: 10 }}>
-                <Text style={{ fontSize: 10 }}> IVA RESPONSABLE INSCRIPTO</Text>
+              <View style={{ border: '1px solid #000' , marginTop: 10 , marginBottom: 2 }}>
+                <Text style={{ fontSize: 10 , paddingBottom: 3 }}> IVA RESPONSABLE INSCRIPTO</Text>
               </View>
             </View>
             <View style={styles.datosEmpresa}>
@@ -169,26 +181,33 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             <Text style={styles.itemH}>DTO. %</Text>
             <Text style={styles.itemH}>IMPORTE</Text>
           </View>
-          {
-            item.length != 0 ?
-              item.map(ele => {
-                return (
-                  <View style={styles.listItem}>
-                    <Text style={styles.itemsL} >{ele.cantidad}</Text>
-                    <Text style={styles.itemsL} >{ele.codigo}</Text>
-                    <Text style={styles.itemsL} >{ele.descripcion}</Text>
-                    <Text style={styles.itemsL} >{ele.precio}</Text>
-                    <Text style={styles.itemsL} >{ele.descuento}</Text>
-                    <Text style={styles.itemsL} >{ele.descuento}</Text>
-                  </View>)
-              }) :
-              null
-          }
+          <View style={styles.content}>
+            <View>
 
-          <View style={styles.totalSubtotal}>
-            <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
-            <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
-            <Text style={styles.itemFinalTotal}>TOTAL                    {"$25.000,00"}</Text>
+              {
+                item.length != 0 ?
+                  item.map(ele => {
+                    return (
+                      <View style={styles.listItem}>
+                        <Text style={styles.itemsL} >{ele.cantidad}</Text>
+                        <Text style={styles.itemsL} >{ele.codigo}</Text>
+                        <Text style={styles.itemsL} >{ele.descripcion}</Text>
+                        <Text style={styles.itemsL} >{ele.precio}</Text>
+                        <Text style={styles.itemsL} >{ele.descuento}</Text>
+                        <Text style={styles.itemsL} >{ele.descuento}</Text>
+                      </View>
+
+                    )
+                  }) :
+                  null
+              }
+            </View>
+
+            <View style={styles.totalSubtotal}>
+              <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
+              <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
+              <Text style={styles.itemFinalTotal}>TOTAL                    {"$25.000,00"}</Text>
+            </View>
           </View>
 
         </View>

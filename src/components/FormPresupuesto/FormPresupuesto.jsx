@@ -84,7 +84,7 @@ function FormPresupuesto() {
             fecha={fecha}
             condIva={condIva}
             item={item}
-          />} fileName="presu2.pdf">
+          />} fileName={`${nameComplete}.pdf`}>
             Solicitar PDF
           </PDFDownloadLink>
         </div>
