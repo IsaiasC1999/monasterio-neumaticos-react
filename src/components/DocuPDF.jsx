@@ -73,36 +73,6 @@ const styles = StyleSheet.create({
 
   // item main
 
-  table: {
-    display: 'table',
-    // backgroundColor: 'red',
-    width: '100%'
-  },
-
-  header: {
-    margin: "auto",
-    flexDirection: "row",
-    borderBottom: "solid",
-    borderBottomColor: 'black',
-    borderBottomWidth: "1px",
-    fontFamily: 'Helvetica-Bold',
-
-  },
-
-  tableColumn: {
-    width: "16.7%",
-    marginBottom: "5px"
-    // borderStyle: "solid",
-    // borderWidth: 1,
-    // borderLeftWidth: 0,
-    // borderTopWidth: 0
-  },
-
-  cellHeader: {
-    margin: "auto",
-    marginTop: 5,
-    fontSize: 10
-  },
 
   body: {
     margin: "auto",
@@ -130,9 +100,32 @@ const styles = StyleSheet.create({
   itemFinalTotal: {
     fontSize: 10,
     fontFamily: 'Helvetica-Bold'
+  },
+
+
+  // prueba nueva tabla
+
+  table: {
+    display: 'table',
+    width: '100%',
+    borderCollapse: 'collapse',
+    marginBottom: 10,
+  },
+  tableRow: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+    borderStyle: 'solid',
+  },
+  tableCell: {
+    width: '25%',
+    padding: 8,
+    textAlign: 'left',
+    fontSize: "10px"
+  },
+  tableRowBody : {
+    flexDirection: 'row',
   }
-
-
 
 });
 
@@ -188,79 +181,27 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             <Text style={styles.itemH}>IMPORTE</Text>
           </View> */}
           <View style={styles.content}>
+
             <View style={styles.table}>
-              <View style={styles.header}>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    cantidad
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>cantidad</Text>
+                <Text style={styles.tableCell}>codigo</Text>
+                <Text style={styles.tableCell}>descripcion</Text> 
+                <Text style={styles.tableCell}>descripcion</Text>
+                <Text style={styles.tableCell}>descripcion</Text>
+                <Text style={styles.tableCell}>descripcion</Text>
               </View>
-              <View style={styles.body}>
-                {item.map(ele => {
-                  return (
-                    <View style={{display:"table-row'" , backgroundColor: 'red' , flexDirection: "row"}} key={ele.descripcion} >
-                      <View style={styles.tableColumn}>
-                        <Text style={styles.cellHeader}>
-                          dasdasdas
-                        </Text>
-                      </View>
-                      <View style={styles.tableColumn}>
-                        <Text style={styles.cellHeader}>
-                          adsdasdasd
-                        </Text>
-                      </View>
-                      <View style={styles.tableColumn}>
-                        <Text style={styles.cellHeader}>
-                          {ele.descripcion}
-                        </Text>
-                      </View>
-                      <View style={styles.tableColumn}>
-                        <Text style={styles.cellHeader}>
-                          {ele.precio}
-                        </Text>
-                      </View>
-                      <View style={styles.tableColumn}>
-                        <Text style={styles.cellHeader}>
-                          {ele.descuento}
-                        </Text>
-                      </View>
-                      <View style={styles.tableColumn}>
-                        <Text style={styles.cellHeader}>
-                          {ele.descuento}
-                        </Text>
-                      </View>
-                    </View>
-
-                  )
-                })}
-
-              </View>
+              {/* {item.map((fila) => ( */}
+                <View key={"sdasdas"} style={styles.tableRowBody}>
+                  <Text style={styles.tableCell}>sadasdasd</Text>
+                  <Text style={styles.tableCell}>asdasdasd</Text>
+                  <Text style={styles.tableCell}>sadasdasd</Text>
+                  <Text style={styles.tableCell}>sadasdasd</Text>
+                  <Text style={styles.tableCell}>sadasdasd</Text>
+                  <Text style={styles.tableCell}>sadasdasd</Text>
+                  {/* Agrega más celdas según tus datos */}
+                </View>
+              {/* ))} */}
             </View>
 
             <View style={styles.totalSubtotal}>

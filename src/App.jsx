@@ -17,9 +17,9 @@ function App() {
       <div className='page-presupuesto'>
         <Header />
         <Main />
-        {/* <PDFViewer style={{width:"400px"}}> 
+        <PDFViewer style={{width:"400px"}}> 
           <MyDocument/>
-        </PDFViewer> */}
+        </PDFViewer>
       </div>
     </FormProvider>
   )
