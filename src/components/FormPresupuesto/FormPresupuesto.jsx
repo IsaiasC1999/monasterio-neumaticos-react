@@ -8,7 +8,7 @@ import FormItem from "../FormItem/FormItem";
 function FormPresupuesto() {
 
 
-  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setFecha, setCondIva, item } = useContext(FormContext)
+  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item } = useContext(FormContext)
 
   const [modalProducts, setModalPorducts] = useState(false)
 
@@ -33,31 +33,27 @@ function FormPresupuesto() {
         <div className="form-presu__inputs">
           <div className="form-presu__gruop">
             <label className="label">Nombre y apellido</label>
-            <input className="input" value={nameComplete} onChange={(e) => setNameComplete(e.target.value)} type="text" />
+            <input className="input" required value={nameComplete} onChange={(e) => setNameComplete(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">Direccion</label>
-            <input className="input" value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
+            <input className="input" required value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">Localidad</label>
-            <input className="input" value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" />
+            <input className="input" required value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">COND. PAGO</label>
-            <input className="input" value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
+            <input className="input" required value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
-            <label className="label">CUIT</label>
+            <label className="label" required >CUIT</label>
             <input className="input" value={cuit} onChange={(e) => setCuit(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
-            <label className="label">Fecha</label>
-            <input className="input" value={fecha} onChange={(e) => setFecha(e.target.value)} type="text" />
-          </div>
-          <div className="form-presu__gruop">
             <label className="label">COND.IVA</label>
-            <input className="input" value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" />
+            <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" />
           </div>
 
         </div>
