@@ -82,13 +82,15 @@ const styles = StyleSheet.create({
   header: {
     margin: "auto",
     flexDirection: "row",
-    borderBottomWidth: "solid",
-    borderWidth: ".5px",
-    fontFamily: 'Helvetica-Bold'
+    borderBottom: "solid",
+    borderBottomColor: 'black',
+    borderBottomWidth: "1px",
+    fontFamily: 'Helvetica-Bold',
+
   },
 
   tableColumn: {
-    width: "20%",
+    width: "16.7%",
     marginBottom: "5px"
     // borderStyle: "solid",
     // borderWidth: 1,
@@ -220,36 +222,44 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
                 </View>
               </View>
               <View style={styles.body}>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    cantidad
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    cantidad
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    cantidad
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
-                <View style={styles.tableColumn}>
-                  <Text style={styles.cellHeader}>
-                    codigo
-                  </Text>
-                </View>
+                {item.map(ele => {
+                  return (
+                    <View style={{display:"table-row'" , backgroundColor: 'red' , flexDirection: "row"}} key={ele.descripcion} >
+                      <View style={styles.tableColumn}>
+                        <Text style={styles.cellHeader}>
+                          dasdasdas
+                        </Text>
+                      </View>
+                      <View style={styles.tableColumn}>
+                        <Text style={styles.cellHeader}>
+                          adsdasdasd
+                        </Text>
+                      </View>
+                      <View style={styles.tableColumn}>
+                        <Text style={styles.cellHeader}>
+                          {ele.descripcion}
+                        </Text>
+                      </View>
+                      <View style={styles.tableColumn}>
+                        <Text style={styles.cellHeader}>
+                          {ele.precio}
+                        </Text>
+                      </View>
+                      <View style={styles.tableColumn}>
+                        <Text style={styles.cellHeader}>
+                          {ele.descuento}
+                        </Text>
+                      </View>
+                      <View style={styles.tableColumn}>
+                        <Text style={styles.cellHeader}>
+                          {ele.descuento}
+                        </Text>
+                      </View>
+                    </View>
+
+                  )
+                })}
+
               </View>
             </View>
 
