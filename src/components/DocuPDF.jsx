@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     height: '20%',
     borderBottom: '1px solid #000',
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    position: 'relative'
 
   },
 
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     width: '28%',
     padding: 5,
     textAlign: 'left',
-    fontSize: "8px"
+    fontSize: "9px"
   }
 
 });
@@ -162,6 +163,36 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
     return fechaFormateada;
   }
 
+  function ItemImporte(item) {
+
+    let itemImporte = (item.cantidad * item.precio)
+
+ 
+      return itemImporte
+  }
+
+  function Total(item){
+    let total = 0;
+      item.forEach( ele => {
+        total = total + (ele.cantidad * ele.precio)
+        
+      });
+      console.log(total);
+      return total;
+  }
+
+  function FormatPrecio(precio){
+    
+    let result = precio.toLocaleString('es-ar', {
+        style: 'currency',
+        currency: 'ARS',
+        minimumFractionDigits: 2
+    });
+
+    return result;
+  }
+
+
   return (
 
     <Document>
@@ -184,6 +215,9 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
               <Text style={{ fontSize: 10 }}>II.BB.: 30717356728</Text>
               <Text style={{ fontSize: 10 }}>Inicio de Actividades: 01/11/2021</Text>
 
+            </View>
+            <View style={{ position: 'absolute', top: 5, right: 265, border: "1px solid black", width: 25, height: 25 }}>
+              <Text style={{ textAlign: "center", marginTop: 2 }}>X</Text>
             </View>
           </View>
           <View style={styles.dataCliente}>
@@ -217,9 +251,9 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
                     <Text style={styles.tableCellBody}>{ele.cantidad}</Text>
                     <Text style={styles.tableCellBody}>{ele.codigo}</Text>
                     <Text style={{ width: '270px', padding: 5, textAlign: 'left', fontSize: "9px" }}>{ele.descripcion}</Text>
-                    <Text style={styles.tableCellBody}>{ele.precio}</Text>
+                    <Text style={styles.tableCellBody}>{FormatPrecio(ele.precio)}</Text>
                     <Text style={styles.tableCellBody}>{ele.descuento}</Text>
-                    <Text style={styles.tableCellBody}>{ele.descuento}</Text>
+                    <Text style={styles.tableCellBody}>{FormatPrecio(ItemImporte(ele))}</Text>
                   </View>
                 )
               })}
@@ -228,7 +262,7 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             <View style={styles.totalSubtotal}>
               <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
               <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
-              <Text style={styles.itemFinalTotal}>TOTAL                    {"$25.000,00"}</Text>
+              <Text style={styles.itemFinalTotal}>TOTAL                    {FormatPrecio(Total(item))}</Text>
             </View>
           </View>
 

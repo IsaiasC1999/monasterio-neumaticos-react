@@ -28,8 +28,10 @@ const styles = StyleSheet.create({
     height: '25%',
     borderBottom: '1px solid #000',
     display: 'flex',
-    flexDirection: 'row'
-
+    flexDirection: 'row',
+    // backgroundColor: 'red',
+    // justifyContent: 'space-between'
+    position: 'relative'
   },
 
   // parte izquierda
@@ -39,7 +41,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '50vh',
-    marginBottom: "4px"
+    marginBottom: "4px",
+    // backgroundColor: 'red'
 
   },
   datosEmpresa: {
@@ -49,7 +52,8 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '50vh',
     textAlign: 'left',
-    gap: 5
+    gap: 5,
+    // backgroundColor: 'green'
   },
 
 
@@ -170,9 +174,9 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
           <View style={styles.headerPresupuesto}>
             <View style={styles.logoPresu}>
               <Image src={ImageLogo} style={{ width: 150, margin: 10 }} />
-              <Text style={{ fontSize: 8 , marginLeft: "4px" , marginBottom:"3px" }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>TRUCK CORDOBA: </Text>Circunvalacion Agustin Tosco 2655 - CP 5000 - Cordoba</Text>
-              <Text style={{ fontSize: 8 , marginLeft: "4px" , marginBottom:"3px" }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CAR COLON: </Text>Av. Colon 4181 TEL. +54 351 5895300 - colon@nueyser.com</Text>
-              <Text style={{ fontSize: 8 , marginLeft: "4px" , marginBottom:"3px" }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>TRUCK OLAVARRIA: </Text>Av. Carlos Pellegrini 5900 -Zalo</Text>
+              <Text style={{ fontSize: 8, marginLeft: "4px", marginBottom: "3px" }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>TRUCK CORDOBA: </Text>Circunvalacion Agustin Tosco 2655 - CP 5000 - Cordoba</Text>
+              <Text style={{ fontSize: 8, marginLeft: "4px", marginBottom: "3px" }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CAR COLON: </Text>Av. Colon 4181 TEL. +54 351 5895300 - colon@nueyser.com</Text>
+              <Text style={{ fontSize: 8, marginLeft: "4px", marginBottom: "3px" }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>TRUCK OLAVARRIA: </Text>Av. Carlos Pellegrini 5900 -Zalo</Text>
 
               <View style={{ border: '1px solid #000', marginTop: 10, marginBottom: 2 }}>
                 <Text style={{ fontSize: 10, paddingBottom: 3 }}> IVA RESPONSABLE INSCRIPTO</Text>
@@ -186,6 +190,10 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
               <Text style={{ fontSize: 10 }}>II.BB.: 30-71671756-5</Text>
               <Text style={{ fontSize: 10 }}>Inicio de Actividades: 12/2019</Text>
 
+            </View>
+
+            <View style={{position: 'absolute', top: 5 , right:265 , border: "1px solid black" , width : 25 , height :25}}>
+              <Text style={{textAlign : "center" , marginTop :2} }>X</Text>
             </View>
           </View>
           <View style={styles.dataCliente}>

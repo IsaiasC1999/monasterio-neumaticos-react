@@ -28,7 +28,7 @@ function FormItem({ closeModal }) {
                 </div>
                 <div className="form-presu__gruop">
                     <label className="label">Cantidad</label>
-                    <input className="input" value={cantidad} onChange={(e) => setCantidad(e.target.value)} type="text" />
+                    <input className="input" value={cantidad} onChange={(e) => setCantidad(e.target.value)} type="number" />
                 </div>
                 <div className="form-presu__gruop">
                     <label className="label">Descripcion</label>
@@ -36,11 +36,11 @@ function FormItem({ closeModal }) {
                 </div>
                 <div className="form-presu__gruop">
                     <label className="label">Precio</label>
-                    <input className="input" value={precio} onChange={(e) => setPrecio(e.target.value)} type="text" />
+                    <input className="input" type='number' value={precio} onChange={(e) => setPrecio(e.target.value)} />
                 </div>
                 <div className="form-presu__gruop">
                     <label className="label">Descuento %</label>
-                    <input className="input" value={descuento} onChange={(e) => setDescuento(e.target.value)} type="text" />
+                    <input className="input" value={descuento} onChange={(e) => setDescuento(e.target.value)} type="number"  />
                 </div>
                 <div className="form-presu__buttons">
                 <button className="form-presu__btn-save" onClick={()=>{SaveItem() , closeModal()}}>Guardar</button>
