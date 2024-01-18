@@ -70,8 +70,8 @@ function FormPresupuesto() {
             :
             null
           }
-
-          <PDFDownloadLink className="form-presu__pdf" style={{ marginTop: "1rem" }} document={<MyDocument
+          <div style={{display: 'flex'}}>
+          <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
             nameComplete={nameComplete}
             direccion={direccion}
             localidad={localidad}
@@ -81,8 +81,21 @@ function FormPresupuesto() {
             condIva={condIva}
             item={item}
           />} fileName={`${nameComplete}.pdf`}>
-            Solicitar PDF
+            Monasterio N. PDF
           </PDFDownloadLink>
+          <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
+            nameComplete={nameComplete}
+            direccion={direccion}
+            localidad={localidad}
+            condPago={condPago}
+            cuit={cuit}
+            fecha={fecha}
+            condIva={condIva}
+            item={item}
+          />} fileName={`${nameComplete}.pdf`}>
+            La Union PDF
+          </PDFDownloadLink>
+          </div>
         </div>
       </form>
 

@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import { FormProvider } from './context/FormContext'
 import { MyDocument } from './components/DocuPDF'
+import { UnionPDF } from './components/DocuUnion'
 
 
 function App() {
@@ -17,9 +18,9 @@ function App() {
       <div className='page-presupuesto'>
         <Header />
         <Main />
-        {/* <PDFViewer style={{width:"400px"}}> 
-          <MyDocument/>
-        </PDFViewer> */}
+        <PDFViewer style={{width:"600px"}}> 
+          <UnionPDF/>
+        </PDFViewer>
       </div>
     </FormProvider>
   )
