@@ -5,6 +5,7 @@ import { FormContext } from "../../context/FormContext";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import FormItem from "../FormItem/FormItem";
+import { UnionPDF } from "../DocuUnion";
 function FormPresupuesto() {
 
 
@@ -44,7 +45,7 @@ function FormPresupuesto() {
             <input className="input" required value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
-            <label className="label">COND. PAGO</label>
+            <label className="label">Cond. Pago</label>
             <input className="input" required value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
@@ -52,7 +53,7 @@ function FormPresupuesto() {
             <input className="input" value={cuit} onChange={(e) => setCuit(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
-            <label className="label">COND.IVA</label>
+            <label className="label">Cond.IVA</label>
             <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" />
           </div>
 
@@ -70,7 +71,7 @@ function FormPresupuesto() {
             :
             null
           }
-          <div style={{display: 'flex'}}>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
           <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
             nameComplete={nameComplete}
             direccion={direccion}
@@ -83,7 +84,7 @@ function FormPresupuesto() {
           />} fileName={`${nameComplete}.pdf`}>
             Monasterio N. PDF
           </PDFDownloadLink>
-          <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
+          <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<UnionPDF
             nameComplete={nameComplete}
             direccion={direccion}
             localidad={localidad}

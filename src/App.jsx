@@ -18,9 +18,9 @@ function App() {
       <div className='page-presupuesto'>
         <Header />
         <Main />
-        <PDFViewer style={{width:"600px"}}> 
+        {/* <PDFViewer style={{width:"600px"}}> 
           <UnionPDF/>
-        </PDFViewer>
+        </PDFViewer> */}
       </div>
     </FormProvider>
   )

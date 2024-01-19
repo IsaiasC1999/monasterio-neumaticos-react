@@ -147,6 +147,7 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
 
   // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
 
+
   function obtenerFechaConFormato() {
     // Obtener la fecha actual
     var fecha = new Date();
@@ -165,6 +166,64 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
 
     return fechaFormateada;
   }
+
+  // para calcular el total el item
+  function ItemImporte(item) {
+
+
+    // console.log(item.cantidad);
+    // console.log(item.precio);
+    let itemImportePrecio = (item.cantidad * item.precio);
+
+    let descuento = itemImportePrecio * item.descuento;
+
+
+
+    return (itemImportePrecio - descuento);
+  }
+
+  // calcular el total en final
+  function Total(item) {
+    let total = 0;
+    item.forEach(ele => {
+      total = total + ItemImporte(ele)
+
+    });
+    // console.log(total);
+    return total;
+  }
+
+  function FormatPrecio(precio) {
+
+
+    let result = precio.toLocaleString('es-ar', {
+      style: 'currency',
+      currency: 'ARS',
+      minimumFractionDigits: 2
+    });
+
+    return result;
+  }
+
+  function FormatPrecioItem(precio) {
+    // Redondear el precio a dos decimales
+    precio = Math.round(precio * 100) / 100;
+
+    // Convertir el precio a una cadena con dos decimales
+    let precioStr = precio.toFixed(2);
+
+    // Obtener la parte entera y la parte decimal
+    let [parteEntera, parteDecimal] = precioStr.split('.');
+
+    // Formatear la parte entera con separadores de miles
+    parteEntera = parseInt(parteEntera).toLocaleString();
+
+    // Combinar la parte entera y la parte decimal en el formato final
+    let result = `$ ${parteEntera},${parteDecimal}`;
+
+    return result;
+  }
+
 
   return (
 
@@ -192,8 +251,8 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
 
             </View>
 
-            <View style={{position: 'absolute', top: 5 , right:265 , border: "1px solid black" , width : 25 , height :25}}>
-              <Text style={{textAlign : "center" , marginTop :2} }>X</Text>
+            <View style={{ position: 'absolute', top: 5, right: 265, border: "1px solid black", width: 25, height: 25 }}>
+              <Text style={{ textAlign: "center", marginTop: 2 }}>X</Text>
             </View>
           </View>
           <View style={styles.dataCliente}>
@@ -214,31 +273,31 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
 
             <View style={styles.table}>
               <View style={styles.tableRow}>
-                <Text style={styles.tableCell}>CANT.</Text>
                 <Text style={styles.tableCell}>CODIGO</Text>
+                <Text style={styles.tableCell}>CANT.</Text>
                 <Text style={{ width: '270px', padding: 5, textAlign: 'left', fontSize: "8px", marginTop: "3px" }}>DESCRIPCION</Text>
                 <Text style={styles.tableCell}>PREC.UNI.</Text>
                 <Text style={styles.tableCell}>DTO%</Text>
                 <Text style={styles.tableCell}>IMPORTE</Text>
               </View>
-              {/* {item.map(ele => {
+              {item.map(ele => {
                 return (
                   <View key={"sdasdas"} style={styles.tableRowBody}>
-                    <Text style={styles.tableCellBody}>{ele.cantidad}</Text>
                     <Text style={styles.tableCellBody}>{ele.codigo}</Text>
+                    <Text style={styles.tableCellBody}>{ele.cantidad}</Text>
                     <Text style={{ width: '270px', padding: 5, textAlign: 'left', fontSize: "9px" }}>{ele.descripcion}</Text>
-                    <Text style={styles.tableCellBody}>{ele.precio}</Text>
+                    <Text style={styles.tableCellBody}>{FormatPrecioItem(ele.precio)}</Text>
                     <Text style={styles.tableCellBody}>{ele.descuento}</Text>
-                    <Text style={styles.tableCellBody}>{ele.descuento}</Text>
+                    <Text style={styles.tableCellBody}>{FormatPrecio(ItemImporte(ele))}</Text>
                   </View>
                 )
-              })} */}
+              })}
             </View>
 
             <View style={styles.totalSubtotal}>
-              <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
-              <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
-              <Text style={styles.itemFinalTotal}>TOTAL                    {"$25.000,00"}</Text>
+              <Text style={styles.itemTotal}>SUBTOTAL             {FormatPrecio(Total(item))}</Text>
+              {/* <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text> */}
+              <Text style={styles.itemFinalTotal}>TOTAL                    {FormatPrecio(Total(item))}</Text>
             </View>
           </View>
 
