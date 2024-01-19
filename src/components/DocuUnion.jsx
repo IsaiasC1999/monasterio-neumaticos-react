@@ -263,7 +263,7 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
             </View>
             <View style={{ width: '50vh', display: 'flex', justifyContent: 'space-between' }}>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND. PAGO : </Text>{condPago}</Text>
-              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>LOCALIDAD : </Text>{localidad}</Text>
+              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>VENDEDOR : </Text>{localidad}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CUIT Nº: </Text>{cuit}</Text>
             </View>
           </View>

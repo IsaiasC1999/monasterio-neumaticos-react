@@ -1,0 +1,51 @@
+table {
+  box-sizing: border-box;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  overflow-x: auto !important;
+  /* Añadido para scroll horizontal */
+  white-space: nowrap !important;
+  /* Añadido para evitar el salto de línea en las celdas */
+  margin-bottom: 20px;
+}
+
+thead {
+  background: rgba(0, 114, 164, 1);
+  border: none;
+  color: white;
+  text-align: center;
+}
+
+th,
+td {
+  padding: .5rem;
+  text-align: center;
+}
+
+@media(max-width: 500px) {
+  table {
+    box-sizing: border-box;
+    max-width: 300px !important;
+    height: 50px;
+    overflow: hidden !important;
+    background-color: red !important;
+  }
+
+  thead {
+    background: rgba(0, 114, 164, 1);
+    border: none;
+    color: white;
+    overflow-x: scroll !important;
+    font-size: 5px !important;
+    text-align: center;
+    // background-color: red !important;
+  }
+
+  th,
+  td {
+    padding: .5rem;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+}

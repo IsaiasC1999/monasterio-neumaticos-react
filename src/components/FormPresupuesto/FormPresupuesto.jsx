@@ -6,6 +6,7 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import FormItem from "../FormItem/FormItem";
 import { UnionPDF } from "../DocuUnion";
+import TableItems from "../TableItems/TableItems";
 function FormPresupuesto() {
 
 
@@ -41,7 +42,7 @@ function FormPresupuesto() {
             <input className="input" required value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
-            <label className="label">Localidad</label>
+            <label className="label">Vendedor</label>
             <input className="input" required value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
@@ -71,32 +72,39 @@ function FormPresupuesto() {
             :
             null
           }
-          <div style={{display: 'flex', justifyContent: 'center'}}>
-          <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
-            nameComplete={nameComplete}
-            direccion={direccion}
-            localidad={localidad}
-            condPago={condPago}
-            cuit={cuit}
-            fecha={fecha}
-            condIva={condIva}
-            item={item}
-          />} fileName={`${nameComplete}.pdf`}>
-            Monasterio N. PDF
-          </PDFDownloadLink>
-          <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<UnionPDF
-            nameComplete={nameComplete}
-            direccion={direccion}
-            localidad={localidad}
-            condPago={condPago}
-            cuit={cuit}
-            fecha={fecha}
-            condIva={condIva}
-            item={item}
-          />} fileName={`${nameComplete}.pdf`}>
-            La Union PDF
-          </PDFDownloadLink>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
+              nameComplete={nameComplete}
+              direccion={direccion}
+              localidad={localidad}
+              condPago={condPago}
+              cuit={cuit}
+              fecha={fecha}
+              condIva={condIva}
+              item={item}
+            />} fileName={`${nameComplete}.pdf`}>
+              Monasterio N. PDF
+            </PDFDownloadLink>
+            <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<UnionPDF
+              nameComplete={nameComplete}
+              direccion={direccion}
+              localidad={localidad}
+              condPago={condPago}
+              cuit={cuit}
+              fecha={fecha}
+              condIva={condIva}
+              item={item}
+            />} fileName={`${nameComplete}.pdf`}>
+              La Union PDF
+            </PDFDownloadLink>
           </div>
+
+          {
+            item.length == 0 ? null
+              : <TableItems items={item} />
+          }
+
+
         </div>
       </form>
 
