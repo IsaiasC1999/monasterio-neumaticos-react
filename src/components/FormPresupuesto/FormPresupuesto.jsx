@@ -7,10 +7,12 @@ import Modal from "../Modal/Modal";
 import FormItem from "../FormItem/FormItem";
 import { UnionPDF } from "../DocuUnion";
 import TableItems from "../TableItems/TableItems";
+import db from "../../firebase/config";
 function FormPresupuesto() {
 
+  const [showBtnPdf, setShowBtnPdf] = useState(false)
 
-  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item } = useContext(FormContext)
+  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item, numPresupuesto, setNumPresupuesto , setItem } = useContext(FormContext)
 
   const [modalProducts, setModalPorducts] = useState(false)
 
@@ -20,6 +22,30 @@ function FormPresupuesto() {
 
 
   }
+
+
+  async function obtenerNumero() {
+
+    const presupuestoDoc = await db.collection('NroPresupuesto').doc('23MLIkZEnyDPihZsl7yX').get();
+
+    if (presupuestoDoc.exists) {
+      const numeroPresupuesto = presupuestoDoc.data().idPresupuesto;
+      setNumPresupuesto(numeroPresupuesto + 1)
+      let nuevoNum = numeroPresupuesto + 1
+      actualizarNumeroPresupuesto(nuevoNum)
+    } else {
+      console.error('El documento no existe.');
+      return null;
+    }
+  }
+
+  const actualizarNumeroPresupuesto = async (nuevoNumero) => {
+
+    console.log(nuevoNumero);
+    await db.collection('NroPresupuesto').doc('23MLIkZEnyDPihZsl7yX').update({
+      idPresupuesto: nuevoNumero,
+    });
+  };
 
   function closeModal() {
     setModalPorducts(!modalProducts)
@@ -46,7 +72,7 @@ function FormPresupuesto() {
             <input className="input" required value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
-            <label className="label">Cond. Pago</label>
+            <label className="label">Forma de pago</label>
             <input className="input" required value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
@@ -55,13 +81,19 @@ function FormPresupuesto() {
           </div>
           <div className="form-presu__gruop">
             <label className="label">Cond.IVA</label>
-            <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" />
+            <select style={{ minWidth: "300px" , marginTop: ".5rem" }} onChange={(e)=> setCondIva(e.target.value)} >
+              <option value="Resp. Inscripto">Resp. Inscripto</option>
+              <option value="Cons. Final">Cons. Final</option>
+              <option value="Exento">Exento</option>
+            </select>
+            {/* <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" /> */}
           </div>
 
         </div>
         <div className="from-presu__buttons">
 
           <button className="form-presu__btn-item" onClick={() => setModalPorducts(!modalProducts)}>Agregar item</button>
+          <button className="form-presu__btn-confirm" onClick={() => { obtenerNumero(), setShowBtnPdf(!showBtnPdf) }}>Confirmar PDF</button>
           {modalProducts
             ?
             <Modal mesaggeAviso={modalProducts}>
@@ -73,35 +105,44 @@ function FormPresupuesto() {
             null
           }
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<MyDocument
-              nameComplete={nameComplete}
-              direccion={direccion}
-              localidad={localidad}
-              condPago={condPago}
-              cuit={cuit}
-              fecha={fecha}
-              condIva={condIva}
-              item={item}
-            />} fileName={`${nameComplete}.pdf`}>
-              Monasterio N. PDF
-            </PDFDownloadLink>
-            <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem" }} document={<UnionPDF
-              nameComplete={nameComplete}
-              direccion={direccion}
-              localidad={localidad}
-              condPago={condPago}
-              cuit={cuit}
-              fecha={fecha}
-              condIva={condIva}
-              item={item}
-            />} fileName={`${nameComplete}.pdf`}>
-              La Union PDF
-            </PDFDownloadLink>
+            {/* <button >gg</button> */}
+            <button onClick={()=>setShowBtnPdf(!showBtnPdf)} style={{ border: "none", backgroundColor: 'inherit' }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${showBtnPdf ? 'block' : 'none'}` }} document={<MyDocument
+                nameComplete={nameComplete}
+                direccion={direccion}
+                localidad={localidad}
+                condPago={condPago}
+                cuit={cuit}
+                fecha={fecha}
+                condIva={condIva}
+                item={item}
+                idPresu={numPresupuesto}
+              />} fileName={`${nameComplete}.pdf`}>
+                Monasterio N. PDF
+              </PDFDownloadLink>
+            </button>
+            <button onClick={()=>setShowBtnPdf(!showBtnPdf)} style={{ border: "none", backgroundColor: 'inherit', }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${showBtnPdf ? 'block' : 'none'}` }} document={<UnionPDF
+                nameComplete={nameComplete}
+                direccion={direccion}
+                localidad={localidad}
+                condPago={condPago}
+                cuit={cuit}
+                fecha={fecha}
+                condIva={condIva}
+                item={item}
+                setItem={setItem}
+                idPresu={numPresupuesto}
+              />} fileName={`${nameComplete}.pdf`}>
+                La Union PDF
+              </PDFDownloadLink>
+            </button>
           </div>
 
           {
+
             item.length == 0 ? null
-              : <TableItems items={item} />
+              : <TableItems items={item} setItem={setItem} />
           }
 
 

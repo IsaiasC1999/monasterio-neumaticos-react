@@ -10,6 +10,7 @@ function FormItem({ closeModal }) {
   function SaveItem() {
     // e.preventDefault();
     setItem([...item, {
+      id : self.crypto.randomUUID(),
       codigo: codigo,
       cantidad: cantidad,
       descripcion: descripcion,

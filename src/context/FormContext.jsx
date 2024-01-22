@@ -5,6 +5,7 @@ export const FormContext = createContext();
 // eslint-disable-next-line react/prop-types
 export function FormProvider({ children }) {
 
+    const [numPresupuesto, setNumPresupuesto] = useState(0); 
     const [nameComplete, setNameComplete] = useState("");
     const [direccion, setDireccion] = useState("");
     const [localidad, setLocalidad] = useState("");
@@ -21,7 +22,7 @@ export function FormProvider({ children }) {
     const [descuento, setDescuento] = useState("");
 
     return (
-        <FormContext.Provider value={{nameComplete,direccion,localidad,condPago,cuit,fecha,condIva,codigo,cantidad,descripcion,precio,descuento,item,setItem,setNameComplete,setDireccion,setLocalidad,setCondPago,setCuit,setFecha,setCondIva,setCodigo,setCantidad,setDescripcion,setPrecio,setDescuento}}>
+        <FormContext.Provider value={{nameComplete,direccion,localidad,condPago,cuit,fecha,condIva,codigo,cantidad,descripcion,precio,descuento,item,numPresupuesto,setNumPresupuesto,setItem,setNameComplete,setDireccion,setLocalidad,setCondPago,setCuit,setFecha,setCondIva,setCodigo,setCantidad,setDescripcion,setPrecio,setDescuento}}>
             {children}
         </FormContext.Provider>
     )

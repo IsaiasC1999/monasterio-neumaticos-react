@@ -53,7 +53,7 @@
         width: 300px;
         // background-color: red;
         border: none;
-        border-bottom: solid 1.5px rgba(0, 0, 255, 0.507);
+        border-bottom: solid 1.5px #0000ff81;
 
         &:focus {
           outline: none;
@@ -85,7 +85,7 @@
       background-color: #eeff00;
       padding: 10px;  
       color: black;
-      margin: 2rem;
+      margin: 1rem;
       font-weight: 500;
       border: 1px solid black;
       border-radius: 7px;
@@ -94,6 +94,20 @@
       &:hover {
         background-color: #fffb00a1;
       }
+    }
+      .form-presu__btn-confirm {
+        background-color: rgba(0, 0, 255, 0.507);
+        padding: 10px;  
+        color: #eeff00;
+        margin: 1rem;
+        font-weight: 500;
+        border: 1px solid black;
+        border-radius: 7px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: rgba(0, 0, 255, 0.678);
+        }
     }
      
   }

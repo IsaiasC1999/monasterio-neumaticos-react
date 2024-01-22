@@ -6,11 +6,12 @@ import Main from './components/Main/Main'
 import { FormProvider } from './context/FormContext'
 // import { MyDocument } from './components/DocuPDF'
 // import { UnionPDF } from './components/DocuUnion'
+import './firebase/config'
+import db from './firebase/config'
+// import { addDoc, collection} from 'firebase/firestore/lite'
 
 
 function App() {
-
-
 
 
   return (
@@ -22,6 +23,9 @@ function App() {
           <UnionPDF/>
         </PDFViewer> */}
       </div>
+
+
+      {/* <button onClick={addFireBase}>agregar persona Fire Base</button> */}
     </FormProvider>
   )
 }

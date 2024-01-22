@@ -1,51 +1,47 @@
 table {
-  box-sizing: border-box;
-  width: 100% !important;
-  border-collapse: collapse !important;
-  overflow-x: auto !important;
-  /* Añadido para scroll horizontal */
-  white-space: nowrap !important;
-  /* Añadido para evitar el salto de línea en las celdas */
-  margin-bottom: 20px;
+  width: 100%;
+  // background-color: red;
+  border: none;
+  margin: 0px;
+  overflow-x: auto;
+  background-color: rgb(226, 223, 223)
 }
 
 thead {
-  background: rgba(0, 114, 164, 1);
+  background-color: blue;
   border: none;
-  color: white;
+  margin: 0px;
   text-align: center;
+  color: white;
 }
 
 th,
 td {
-  padding: .5rem;
-  text-align: center;
+  border: none;
 }
 
-@media(max-width: 500px) {
+@media(max-width:767px) {
+
   table {
-    box-sizing: border-box;
-    max-width: 300px !important;
-    height: 50px;
-    overflow: hidden !important;
-    background-color: red !important;
+    width: 100%;
+    // background-color: yellow;
+    border: none;
   }
 
   thead {
-    background: rgba(0, 114, 164, 1);
+    background-color: blue;
     border: none;
-    color: white;
-    overflow-x: scroll !important;
-    font-size: 5px !important;
+    margin: 0px;
     text-align: center;
-    // background-color: red !important;
+    color: white;
+    font-size: 13px;
   }
 
   th,
   td {
-    padding: .5rem;
-    text-align: center;
-    box-sizing: border-box;
+    border: none;
+    font-size: 13px;
   }
+
 
 }

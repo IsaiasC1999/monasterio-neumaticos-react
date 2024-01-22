@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item }) => {
+export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item,idPresu }) => {
 
   // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
 
@@ -243,7 +243,7 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
             </View>
             <View style={styles.datosEmpresa}>
               <Text style={{ fontSize: 20 }}>PRESUPUESTO</Text>
-              <Text style={{ fontSize: 10 }}>Nº : 000045</Text>
+              <Text style={{ fontSize: 10 }}>Nº : {idPresu}</Text>
               <Text style={{ fontSize: 10, fontWeight: 'bold' }}>FECHA  {obtenerFechaConFormato()}</Text>
               <Text style={{ fontSize: 10 }}>CUIT: 30-71671756-5</Text>
               <Text style={{ fontSize: 10 }}>II.BB.: 30-71671756-5</Text>
@@ -262,7 +262,7 @@ export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, c
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND.IVA : </Text>{condIva}</Text>
             </View>
             <View style={{ width: '50vh', display: 'flex', justifyContent: 'space-between' }}>
-              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND. PAGO : </Text>{condPago}</Text>
+              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>FORMA DE PAGO : </Text>{condPago}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>VENDEDOR : </Text>{localidad}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CUIT Nº: </Text>{cuit}</Text>
             </View>

@@ -3,6 +3,7 @@
 // import { useContext } from 'react';
 import ImageLogo from '../img/logoMonasterio.png'
 import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+import db from '../firebase/config';
 // import { FormContext } from '../context/FormContext';
 
 // Create styles
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item }) => {
+export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item,idPresu }) => {
 
   // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
 
@@ -165,10 +166,16 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
 
   function ItemImporte(item) {
 
-    let itemImporte = (item.cantidad * item.precio)
 
- 
-      return itemImporte
+    // console.log(item.cantidad);
+    // console.log(item.precio);
+    let itemImportePrecio = (item.cantidad * item.precio);
+
+    let descuento = itemImportePrecio * item.descuento;
+
+
+
+    return (itemImportePrecio - descuento);
   }
 
   function Total(item){
@@ -192,6 +199,26 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
     return result;
   }
 
+  function FormatPrecioItem(precio) {
+    // Redondear el precio a dos decimales
+    precio = Math.round(precio * 100) / 100;
+
+    // Convertir el precio a una cadena con dos decimales
+    let precioStr = precio.toFixed(2);
+
+    // Obtener la parte entera y la parte decimal
+    let [parteEntera, parteDecimal] = precioStr.split('.');
+
+    // Formatear la parte entera con separadores de miles
+    parteEntera = parseInt(parteEntera).toLocaleString();
+
+    // Combinar la parte entera y la parte decimal en el formato final
+    let result = `$ ${parteEntera},${parteDecimal}`;
+
+    return result;
+  }
+ 
+
 
   return (
 
@@ -209,7 +236,7 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             </View>
             <View style={styles.datosEmpresa}>
               <Text style={{ fontSize: 20 }}>PRESUPUESTO</Text>
-              <Text style={{ fontSize: 10 }}>Nº : 000045</Text>
+              <Text style={{ fontSize: 10 }}>Nº : {idPresu}</Text>
               <Text style={{ fontSize: 10, fontWeight: 'bold' }}>FECHA  {obtenerFechaConFormato()}</Text>
               <Text style={{ fontSize: 10 }}>CUIT: 30-71735672-8</Text>
               <Text style={{ fontSize: 10 }}>II.BB.: 30717356728</Text>
@@ -227,7 +254,7 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND.IVA : </Text>{condIva}</Text>
             </View>
             <View style={{ width: '50vh', display: 'flex', justifyContent: 'space-between' }}>
-              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND. PAGO : </Text>{condPago}</Text>
+              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>FORMA DE PAGO : </Text>{condPago}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>VENDEDOR : </Text>{localidad}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>CUIT Nº: </Text>{cuit}</Text>
             </View>
@@ -238,8 +265,8 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
 
             <View style={styles.table}>
               <View style={styles.tableRow}>
-                <Text style={styles.tableCell}>CANT.</Text>
                 <Text style={styles.tableCell}>CODIGO</Text>
+                <Text style={styles.tableCell}>CANT.</Text>
                 <Text style={{ width: '270px', padding: 5, textAlign: 'left', fontSize: "8px", marginTop: "3px" }}>DESCRIPCION</Text>
                 <Text style={styles.tableCell}>PREC.UNI.</Text>
                 <Text style={styles.tableCell}>DTO%</Text>
@@ -248,10 +275,10 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
               {item.map(ele => {
                 return (
                   <View key={"sdasdas"} style={styles.tableRowBody}>
-                    <Text style={styles.tableCellBody}>{ele.cantidad}</Text>
                     <Text style={styles.tableCellBody}>{ele.codigo}</Text>
+                    <Text style={styles.tableCellBody}>{ele.cantidad}</Text>
                     <Text style={{ width: '270px', padding: 5, textAlign: 'left', fontSize: "9px" }}>{ele.descripcion}</Text>
-                    <Text style={styles.tableCellBody}>{FormatPrecio(ele.precio)}</Text>
+                    <Text style={styles.tableCellBody}>{FormatPrecioItem(ele.precio)}</Text>
                     <Text style={styles.tableCellBody}>{ele.descuento}</Text>
                     <Text style={styles.tableCellBody}>{FormatPrecio(ItemImporte(ele))}</Text>
                   </View>
@@ -260,8 +287,8 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
             </View>
 
             <View style={styles.totalSubtotal}>
-              <Text style={styles.itemTotal}>SUBTOTAL             {"$25.000,00"}</Text>
-              <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text>
+              <Text style={styles.itemTotal}>SUBTOTAL             {FormatPrecio(Total(item))}</Text>
+              {/* <Text style={styles.itemTotal}>DTO                                 {"$0,00"}</Text> */}
               <Text style={styles.itemFinalTotal}>TOTAL                    {FormatPrecio(Total(item))}</Text>
             </View>
           </View>
