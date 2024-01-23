@@ -79,7 +79,7 @@ function TableItems({ items,setItem}) {
             <th>Precio Uni.</th>
             <th>Descuento</th>
             <th>Importe</th>
-            <th>Borrar</th>
+            <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -92,7 +92,8 @@ function TableItems({ items,setItem}) {
               <td>{ele.descuento}</td>
               <td>{FormatPrecio(ItemImporte(ele))}</td>
               <td><button
-                style={{backgroundColor:'red'}}
+                  className="form-table-btn"
+                
               onClick={() => DeleteItem(ele.id)}>borrar</button></td>
             </tr>
           )}

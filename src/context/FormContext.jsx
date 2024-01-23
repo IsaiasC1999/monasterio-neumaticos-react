@@ -13,6 +13,7 @@ export function FormProvider({ children }) {
     const [cuit, setCuit] = useState("");
     const [fecha, setFecha] = useState("");
     const [condIva, setCondIva] = useState("");
+    const [NroCliente,setNroCliente]=useState("")
     // tiene que ser un array
     const [item,setItem]= useState([]);
     const [codigo, setCodigo] = useState(""); 
@@ -22,7 +23,7 @@ export function FormProvider({ children }) {
     const [descuento, setDescuento] = useState("");
 
     return (
-        <FormContext.Provider value={{nameComplete,direccion,localidad,condPago,cuit,fecha,condIva,codigo,cantidad,descripcion,precio,descuento,item,numPresupuesto,setNumPresupuesto,setItem,setNameComplete,setDireccion,setLocalidad,setCondPago,setCuit,setFecha,setCondIva,setCodigo,setCantidad,setDescripcion,setPrecio,setDescuento}}>
+        <FormContext.Provider value={{nameComplete,direccion,localidad,condPago,cuit,fecha,condIva,codigo,cantidad,descripcion,precio,descuento,item,numPresupuesto,NroCliente,setNumPresupuesto,setItem,setNameComplete,setDireccion,setLocalidad,setCondPago,setCuit,setFecha,setCondIva,setCodigo,setCantidad,setDescripcion,setPrecio,setDescuento,setNroCliente}}>
             {children}
         </FormContext.Provider>
     )

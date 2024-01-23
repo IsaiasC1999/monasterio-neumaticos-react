@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item,idPresu }) => {
+export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item,idPresu,NroCliente }) => {
 
   // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
 
@@ -178,14 +178,14 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
     return (itemImportePrecio - descuento);
   }
 
-  function Total(item){
+  function Total(item) {
     let total = 0;
-      item.forEach( ele => {
-        total = total + (ele.cantidad * ele.precio)
-        
-      });
-      console.log(total);
-      return total;
+    item.forEach(ele => {
+      total = total + ItemImporte(ele)
+
+    });
+    // console.log(total);
+    return total;
   }
 
   function FormatPrecio(precio){
@@ -252,6 +252,7 @@ export const MyDocument = ({ nameComplete, direccion, localidad, condPago, cuit,
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>NOMBRE : </Text>{nameComplete}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>DIRECCIÓN : </Text>{direccion}</Text>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>COND.IVA : </Text>{condIva}</Text>
+              <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Nº CLIENTE: </Text>{NroCliente}</Text>
             </View>
             <View style={{ width: '50vh', display: 'flex', justifyContent: 'space-between' }}>
               <Text style={{ fontSize: 10 }}><Text style={{ fontFamily: 'Helvetica-Bold' }}>FORMA DE PAGO : </Text>{condPago}</Text>
