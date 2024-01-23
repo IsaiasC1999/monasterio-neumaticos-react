@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item,idPresu }) => {
+export const UnionPDF = ({ nameComplete, direccion, localidad, condPago, cuit, condIva, item,idPresu,NroCliente }) => {
 
   // const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, codigo, cantidad, descripcion, precio, descuento } = useContext(FormContext)
 

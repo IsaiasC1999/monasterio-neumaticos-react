@@ -12,7 +12,7 @@ function FormPresupuesto() {
 
   const [showBtnPdf, setShowBtnPdf] = useState(false)
 
-  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item, numPresupuesto, setNumPresupuesto , setItem } = useContext(FormContext)
+  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item, numPresupuesto, setNumPresupuesto , setItem ,NroCliente ,setNroCliente } = useContext(FormContext)
 
   const [modalProducts, setModalPorducts] = useState(false)
 
@@ -88,6 +88,10 @@ function FormPresupuesto() {
             </select>
             {/* <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" /> */}
           </div>
+          <div className="form-presu__gruop">
+            <label className="label" required >Nº Cliente</label>
+            <input className="input" value={cuit} onChange={(e) => setNroCliente(e.target.value)} type="text" />
+          </div>
 
         </div>
         <div className="from-presu__buttons">
@@ -117,7 +121,8 @@ function FormPresupuesto() {
                 condIva={condIva}
                 item={item}
                 idPresu={numPresupuesto}
-              />} fileName={`${nameComplete}.pdf`}>
+                NroCliente={NroCliente}
+                />} fileName={`${nameComplete}.pdf`}>
                 Monasterio N. PDF
               </PDFDownloadLink>
             </button>
@@ -133,6 +138,7 @@ function FormPresupuesto() {
                 item={item}
                 setItem={setItem}
                 idPresu={numPresupuesto}
+                NroClienteNroCliente={NroCliente}
               />} fileName={`${nameComplete}.pdf`}>
                 La Union PDF
               </PDFDownloadLink>
