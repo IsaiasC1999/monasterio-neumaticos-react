@@ -89,7 +89,7 @@ function FormPresupuesto() {
             {/* <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" /> */}
           </div>
           <div className="form-presu__gruop">
-            <label className="label" required >Nº Cliente</label>
+            <label className="label" required >Nº Celular</label>
             <input className="input" value={cuit} onChange={(e) => setNroCliente(e.target.value)} type="text" />
           </div>
 
