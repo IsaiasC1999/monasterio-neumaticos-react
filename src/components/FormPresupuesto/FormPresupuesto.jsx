@@ -90,7 +90,7 @@ function FormPresupuesto() {
           </div>
           <div className="form-presu__gruop">
             <label className="label" required >Nº Celular</label>
-            <input className="input" value={cuit} onChange={(e) => setNroCliente(e.target.value)} type="text" />
+            <input className="input" value={NroCliente} onChange={(e) => setNroCliente(e.target.value)} type="text" />
           </div>
 
         </div>
