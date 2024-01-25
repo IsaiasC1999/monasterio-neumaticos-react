@@ -6,7 +6,7 @@
     width: 100%;
     position: sticky;
     top: 0px;
-    height: 5rem;
+    height: 4.5rem;
     // padding-left: 2rem;
     // padding-right: 2rem;
 
@@ -19,7 +19,7 @@
         align-items: center;
         .header__img {
             height: 2.5rem;
-            width: 20rem;
+            width: 13rem;
         }
     }
 }
@@ -29,14 +29,14 @@
     .header{
         // background-color: red;
         &__logo {
-            height: 4.5rem;
+            height: 3rem;
             // background-color: #FFD700;
             display: flex;
             justify-content: center;
             align-items: center;
             .header__img {
-                height: 3rem;
-                width: 20rem;
+                height: 2.5rem;
+                width: 13rem;
             }
         }
     }
