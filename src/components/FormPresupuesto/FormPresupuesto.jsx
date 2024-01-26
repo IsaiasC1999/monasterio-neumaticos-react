@@ -110,8 +110,8 @@ function FormPresupuesto() {
           }
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             {/* <button >gg</button> */}
-            <button onClick={()=>setShowBtnPdf(!showBtnPdf)} style={{ border: "none", backgroundColor: 'inherit' }}>
-              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${showBtnPdf ? 'block' : 'none'}` }} document={<MyDocument
+            <button onClick={()=>{setShowBtnPdf(!showBtnPdf),setNumPresupuesto(0)}} style={{ border: "none", backgroundColor: 'inherit' }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 ? 'block' : 'none'}` }} document={<MyDocument
                 nameComplete={nameComplete}
                 direccion={direccion}
                 localidad={localidad}
@@ -126,8 +126,8 @@ function FormPresupuesto() {
                 Monasterio N. PDF
               </PDFDownloadLink>
             </button>
-            <button onClick={()=>setShowBtnPdf(!showBtnPdf)} style={{ border: "none", backgroundColor: 'inherit', }}>
-              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${showBtnPdf ? 'block' : 'none'}` }} document={<UnionPDF
+            <button onClick={()=>{setShowBtnPdf(!showBtnPdf),setNumPresupuesto(0)}} style={{ border: "none", backgroundColor: 'inherit', }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${ numPresupuesto!=0 ? 'block' : 'none'}` }} document={<UnionPDF
                 nameComplete={nameComplete}
                 direccion={direccion}
                 localidad={localidad}
