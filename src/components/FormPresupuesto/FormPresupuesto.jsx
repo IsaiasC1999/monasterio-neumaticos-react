@@ -8,13 +8,16 @@ import FormItem from "../FormItem/FormItem";
 import { UnionPDF } from "../DocuUnion";
 import TableItems from "../TableItems/TableItems";
 import db from "../../firebase/config";
+import FormItemUpdate from "../FormItemUpdate/FormItemUpdate";
 function FormPresupuesto() {
 
   const [showBtnPdf, setShowBtnPdf] = useState(false)
 
-  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item, numPresupuesto, setNumPresupuesto , setItem ,NroCliente ,setNroCliente } = useContext(FormContext)
+  const { nameComplete, direccion, localidad, condPago, cuit, fecha, condIva, setNameComplete, setDireccion, setLocalidad, setCondPago, setCuit, setCondIva, item, numPresupuesto, setNumPresupuesto, setItem, NroCliente, setNroCliente } = useContext(FormContext)
 
   const [modalProducts, setModalPorducts] = useState(false)
+  const [modalProductUpdate, setmodalProductUpdate] = useState(false);
+  const [ItemUpdate, setItemUpdate] = useState(null);
 
   function HangleSubmit(e) {
     e.preventDefault()
@@ -51,6 +54,16 @@ function FormPresupuesto() {
     setModalPorducts(!modalProducts)
   }
 
+
+  // logica de actualizar item metodos
+  function closeModalUpdateItem() {
+    setmodalProductUpdate(!modalProductUpdate)
+  }
+
+  function showModalUpdate() {
+     setmodalProductUpdate(!modalProductUpdate) 
+  }
+
   return (
     <>
       <form onSubmit={HangleSubmit} className="form-presu">
@@ -81,7 +94,7 @@ function FormPresupuesto() {
           </div>
           <div className="form-presu__gruop">
             <label className="label">Cond.IVA</label>
-            <select style={{ minWidth: "300px" , marginTop: ".5rem" }} onChange={(e)=> setCondIva(e.target.value)} >
+            <select style={{ minWidth: "300px", marginTop: ".5rem" }} onChange={(e) => setCondIva(e.target.value)} >
               <option value="Resp. Inscripto">Resp. Inscripto</option>
               <option value="Cons. Final">Cons. Final</option>
               <option value="Exento">Exento</option>
@@ -108,9 +121,18 @@ function FormPresupuesto() {
             :
             null
           }
+          {
+            modalProductUpdate ?
+              <Modal mesaggeAviso={modalProductUpdate}>
+                <h3>Modificar Producto</h3>
+                <FormItemUpdate ItemUpdate={ItemUpdate} setItemUpdate={setItemUpdate}  closeModal={closeModalUpdateItem} />
+              </Modal>
+              :
+              null
+          }
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             {/* <button >gg</button> */}
-            <button onClick={()=>{setShowBtnPdf(!showBtnPdf),setNumPresupuesto(0)}} style={{ border: "none", backgroundColor: 'inherit' }}>
+            <button onClick={() => { setShowBtnPdf(!showBtnPdf), setNumPresupuesto(0) }} style={{ border: "none", backgroundColor: 'inherit' }}>
               <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 ? 'block' : 'none'}` }} document={<MyDocument
                 nameComplete={nameComplete}
                 direccion={direccion}
@@ -122,12 +144,12 @@ function FormPresupuesto() {
                 item={item}
                 idPresu={numPresupuesto}
                 NroCliente={NroCliente}
-                />} fileName={`${nameComplete}.pdf`}>
+              />} fileName={`${nameComplete}.pdf`}>
                 Monasterio N. PDF
               </PDFDownloadLink>
             </button>
-            <button onClick={()=>{setShowBtnPdf(!showBtnPdf),setNumPresupuesto(0)}} style={{ border: "none", backgroundColor: 'inherit', }}>
-              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${ numPresupuesto!=0 ? 'block' : 'none'}` }} document={<UnionPDF
+            <button onClick={() => { setShowBtnPdf(!showBtnPdf), setNumPresupuesto(0) }} style={{ border: "none", backgroundColor: 'inherit', }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 ? 'block' : 'none'}` }} document={<UnionPDF
                 nameComplete={nameComplete}
                 direccion={direccion}
                 localidad={localidad}
@@ -148,7 +170,7 @@ function FormPresupuesto() {
           {
 
             item.length == 0 ? null
-              : <TableItems items={item} setItem={setItem} />
+              : <TableItems items={item} setItem={setItem} showModalUpdate={showModalUpdate} setItemUpdate={setItemUpdate} />
           }
 
 
