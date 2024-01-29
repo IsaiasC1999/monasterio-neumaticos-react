@@ -95,6 +95,7 @@ function FormPresupuesto() {
           <div className="form-presu__gruop">
             <label className="label">Cond.IVA</label>
             <select style={{ minWidth: "300px", marginTop: ".5rem" }} onChange={(e) => setCondIva(e.target.value)} >
+              <option value="" >.</option>
               <option value="Resp. Inscripto">Resp. Inscripto</option>
               <option value="Cons. Final">Cons. Final</option>
               <option value="Exento">Exento</option>
