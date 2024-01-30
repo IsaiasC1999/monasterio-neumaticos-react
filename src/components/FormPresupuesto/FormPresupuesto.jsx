@@ -88,7 +88,7 @@ function FormPresupuesto() {
               <option value="Mateo Monasterio">Mateo Monasterio</option>
               <option value="Maximiliano Monasterio">Maximiliano Monasterio</option>
               <option value="Micael Monasterio">Micael Monasterio</option>
-              <option value="Gabriel Corrado">Gabriel Corrado</option>
+              <option value="Gabriel Corrado">Gabriel Corrales</option>
               <option value="Elias Devani">Elias Devani</option>
               <option value="Gonzalo Devani">Gonzalo Devani</option>
             </select>
