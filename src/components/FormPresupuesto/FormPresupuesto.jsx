@@ -82,7 +82,16 @@ function FormPresupuesto() {
           </div>
           <div className="form-presu__gruop">
             <label className="label">Vendedor</label>
-            <input className="input" required value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" />
+            {/* <input className="input" required value={localidad} onChange={(e) => setLocalidad(e.target.value)} type="text" /> */}
+            <select style={{ minWidth: "300px", marginTop: ".5rem" }} onChange={(e) => setLocalidad(e.target.value)} >
+              <option value="" >Seleccionar</option>
+              <option value="Mateo Monasterio">Mateo Monasterio</option>
+              <option value="Maximiliano Monasterio">Maximiliano Monasterio</option>
+              <option value="Micael Monasterio">Micael Monasterio</option>
+              <option value="Gabriel Corrado">Gabriel Corrado</option>
+              <option value="Elias Devani">Elias Devani</option>
+              <option value="Gonzalo Devani">Gonzalo Devani</option>
+            </select>
           </div>
           <div className="form-presu__gruop">
             <label className="label">Forma de pago</label>
@@ -95,7 +104,7 @@ function FormPresupuesto() {
           <div className="form-presu__gruop">
             <label className="label">Cond.IVA</label>
             <select style={{ minWidth: "300px", marginTop: ".5rem" }} onChange={(e) => setCondIva(e.target.value)} >
-              <option value="" >.</option>
+              <option value="" >Seleccionar</option>
               <option value="Resp. Inscripto">Resp. Inscripto</option>
               <option value="Cons. Final">Cons. Final</option>
               <option value="Exento">Exento</option>

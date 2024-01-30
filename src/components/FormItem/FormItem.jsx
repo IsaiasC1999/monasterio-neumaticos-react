@@ -26,7 +26,7 @@ function FormItem({ closeModal }) {
       <div className="form-presu__gruop">
         <label className="label">Codigo</label>
         <select onChange={(e) => setCodigo(e.target.value)} style={{ width: "100%" }}>
-          <option>.</option>
+          <option value="">Seleccionar</option>
           <option value=".1">.1</option>
           <option value=".2">.2</option>
         </select>
