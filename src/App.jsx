@@ -23,9 +23,6 @@ function App() {
           <UnionPDF/>
         </PDFViewer> */}
       </div>
-      <div className='ura-peluda' style={{display:"none"}}>
-        hola como estas mas cambiosn para todos gg
-      </div>
 
       {/* <button onClick={addFireBase}>agregar persona Fire Base</button> */}
     </FormProvider>

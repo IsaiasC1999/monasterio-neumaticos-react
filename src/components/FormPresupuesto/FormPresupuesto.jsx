@@ -9,6 +9,8 @@ import { UnionPDF } from "../DocuUnion";
 import TableItems from "../TableItems/TableItems";
 import db from "../../firebase/config";
 import FormItemUpdate from "../FormItemUpdate/FormItemUpdate";
+import { Spinner } from "react-bootstrap";
+import { ClipLoader } from "react-spinners";
 function FormPresupuesto() {
 
   const [showBtnPdf, setShowBtnPdf] = useState(false)
@@ -18,12 +20,21 @@ function FormPresupuesto() {
   const [modalProducts, setModalPorducts] = useState(false)
   const [modalProductUpdate, setmodalProductUpdate] = useState(false);
   const [ItemUpdate, setItemUpdate] = useState(null);
+  const [temporizador, setTemporizador] = useState(false);
+  const [Loader, setLoader] = useState(false);
 
   function HangleSubmit(e) {
     e.preventDefault()
     // const pdf = <MyDocument />
 
 
+  }
+
+  function timeWaitBtn() {
+    // setTemporizador(true)
+    setTimeout(() => {
+      setTemporizador(true)
+    }, 4000);
   }
 
 
@@ -61,7 +72,7 @@ function FormPresupuesto() {
   }
 
   function showModalUpdate() {
-     setmodalProductUpdate(!modalProductUpdate) 
+    setmodalProductUpdate(!modalProductUpdate)
   }
 
   return (
@@ -74,11 +85,11 @@ function FormPresupuesto() {
         <div className="form-presu__inputs">
           <div className="form-presu__gruop">
             <label className="label">Nombre y apellido</label>
-            <input className="input"  value={nameComplete} onChange={(e) => setNameComplete(e.target.value)} type="text" />
+            <input className="input" value={nameComplete} onChange={(e) => setNameComplete(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">Direccion</label>
-            <input className="input"  value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
+            <input className="input" value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">Vendedor</label>
@@ -95,7 +106,7 @@ function FormPresupuesto() {
           </div>
           <div className="form-presu__gruop">
             <label className="label">Forma de pago</label>
-            <input className="input"  value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
+            <input className="input" value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label" required >CUIT</label>
@@ -120,7 +131,7 @@ function FormPresupuesto() {
         <div className="from-presu__buttons">
 
           <button className="form-presu__btn-item" onClick={() => setModalPorducts(!modalProducts)}>Agregar item</button>
-          <button className="form-presu__btn-confirm" onClick={() => { obtenerNumero(), setShowBtnPdf(!showBtnPdf) }}>Confirmar PDF</button>
+          <button className="form-presu__btn-confirm" onClick={() => { obtenerNumero(), timeWaitBtn() }}>Confirmar PDF</button>
           {modalProducts
             ?
             <Modal mesaggeAviso={modalProducts}>
@@ -135,15 +146,22 @@ function FormPresupuesto() {
             modalProductUpdate ?
               <Modal mesaggeAviso={modalProductUpdate}>
                 <h3>Modificar Producto</h3>
-                <FormItemUpdate ItemUpdate={ItemUpdate} setItemUpdate={setItemUpdate}  closeModal={closeModalUpdateItem} />
+                <FormItemUpdate ItemUpdate={ItemUpdate} setItemUpdate={setItemUpdate} closeModal={closeModalUpdateItem} />
               </Modal>
               :
               null
           }
+
+          {(temporizador == false && numPresupuesto != 0) &&
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", }}>
+              <ClipLoader size={24} color="	#000080" />
+              <span style={{ fontWeight: "bold" , marginLeft:"5px" }}>Generando PDF</span>
+            </div>
+          }
+
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {/* <button >gg</button> */}
-            <button onClick={() => { setShowBtnPdf(!showBtnPdf), setNumPresupuesto(0) }} style={{ border: "none", backgroundColor: 'inherit' }}>
-              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 ? 'block' : 'none'}` }} document={<MyDocument
+            <button onClick={() => { setShowBtnPdf(!showBtnPdf), setNumPresupuesto(0), setTemporizador(false) }} style={{ border: "none", backgroundColor: 'inherit' }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 && temporizador ? 'block' : 'none'}` }} document={<MyDocument
                 nameComplete={nameComplete}
                 direccion={direccion}
                 localidad={localidad}
@@ -158,8 +176,8 @@ function FormPresupuesto() {
                 Monasterio N. PDF
               </PDFDownloadLink>
             </button>
-            <button onClick={() => { setShowBtnPdf(!showBtnPdf), setNumPresupuesto(0) }} style={{ border: "none", backgroundColor: 'inherit', }}>
-              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 ? 'block' : 'none'}` }} document={<UnionPDF
+            <button onClick={() => { setShowBtnPdf(!showBtnPdf), setNumPresupuesto(0), setTemporizador(false) }} style={{ border: "none", backgroundColor: 'inherit', }}>
+              <PDFDownloadLink className="form-presu__pdf" style={{ margin: "1rem", display: `${numPresupuesto != 0 && temporizador ? 'block' : 'none'}` }} document={<UnionPDF
                 nameComplete={nameComplete}
                 direccion={direccion}
                 localidad={localidad}
