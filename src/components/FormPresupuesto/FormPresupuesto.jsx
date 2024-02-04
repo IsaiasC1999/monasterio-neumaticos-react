@@ -74,11 +74,11 @@ function FormPresupuesto() {
         <div className="form-presu__inputs">
           <div className="form-presu__gruop">
             <label className="label">Nombre y apellido</label>
-            <input className="input" required value={nameComplete} onChange={(e) => setNameComplete(e.target.value)} type="text" />
+            <input className="input"  value={nameComplete} onChange={(e) => setNameComplete(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">Direccion</label>
-            <input className="input" required value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
+            <input className="input"  value={direccion} onChange={(e) => setDireccion(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label">Vendedor</label>
@@ -95,7 +95,7 @@ function FormPresupuesto() {
           </div>
           <div className="form-presu__gruop">
             <label className="label">Forma de pago</label>
-            <input className="input" required value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
+            <input className="input"  value={condPago} onChange={(e) => setCondPago(e.target.value)} type="text" />
           </div>
           <div className="form-presu__gruop">
             <label className="label" required >CUIT</label>
@@ -112,7 +112,7 @@ function FormPresupuesto() {
             {/* <input className="input" required value={condIva} onChange={(e) => setCondIva(e.target.value)} type="text" /> */}
           </div>
           <div className="form-presu__gruop">
-            <label className="label" required >Nº Celular</label>
+            <label className="label" >Nº Celular</label>
             <input className="input" value={NroCliente} onChange={(e) => setNroCliente(e.target.value)} type="text" />
           </div>
 
